@@ -1,5 +1,7 @@
 # <Tomorrow2Due>
+
 //pending logo image//
+
 ## Description
 
 This to-do list tracker is a web application designed to help users manage their tasks effectively. It provides a user-friendly interface to create, organize, and track tasks, making it easier to stay on top of daily responsibilities and achieve goals. <br />
@@ -14,6 +16,7 @@ This to-do list tracker is a web application designed to help users manage their
 **Follow these steps to install Tomorrow2Due** <br />
 <br />
 **Installation Prerequisites** <br />
+
 //pending completion for steps// <br />
 
 ## Usage
@@ -46,4 +49,3 @@ Richard Treau <br />
 Adriana Hernandez <br />
 Chris Long <br />
 Prishant Tiwari 
-![image](https://github.com/user-attachments/assets/d4421449-2c58-471d-8181-29aeb6208858)
