@@ -2,12 +2,12 @@
 //pending logo image//
 ## Description
 
-This to-do list tracker is a web application designed to help users manage their tasks effectively. It provides a user-friendly interface to create, organize, and track tasks, making it easier to stay on top of daily responsibilities and achieve goals.
-Key Features: <br />
-	• Task Creation and Management: Users can easily create new tasks with descriptions, due dates, and priorities.
-	• Task Organization: Tasks can be organized into different categories or lists to improve clarity and focus.
-	• Task Tracking: The application allows users to mark tasks as complete, track progress, and view a history of completed tasks.
-	• User-Friendly Interface: The website features a clean and intuitive design for a seamless user experience.
+This to-do list tracker is a web application designed to help users manage their tasks effectively. It provides a user-friendly interface to create, organize, and track tasks, making it easier to stay on top of daily responsibilities and achieve goals. <br />
+**Key Features:** <br />
+	• **Task Creation and Management:** Users can easily create new tasks with descriptions, due dates, and priorities. <br />
+	• **Task Organization:** Tasks can be organized into different categories or lists to improve clarity and focus. <br />
+	• **Task Tracking:** The application allows users to mark tasks as complete, track progress, and view a history of completed tasks. <br />
+	• **User-Friendly Interface:** The website features a clean and intuitive design for a seamless user experience. <br />
 
 ## Installation
 
