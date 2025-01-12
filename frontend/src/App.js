@@ -20,7 +20,9 @@ function App() {
 }
 
 // export default App;
-
+$('#calendar').fullCalendar({
+  defaultView: 'month', // Change to 'week', 'agendaDay', etc.
+});
  // Initialize FullCalendar
  const calendar = new FullCalendar.Calendar(calendarEl, {
   initialView: 'month', // Show month view by default
@@ -54,6 +56,14 @@ function App() {
       }
   }
 });
+
+//Reminders
+var eventTime = new Date('2025-01-14T10:00:00').getTime();
+var reminderTime = eventTime - 600000; // 10 minutes before the event
+
+setTimeout(function() {
+  alert("Reminder: Your event starts soon!");
+}, reminderTime - Date.now());
 
 calendar.render();
 // Function to add task to the backend (PostgreSQL)
