@@ -13,10 +13,10 @@ app.get('/', (req, res) => res.send('Server is running'));
 
 // Set up PostgreSQL connection pool
 const pool = new Pool({
-    user: 'your_user',        // Replace with your PostgreSQL username
+    user: 'your_user',        // Replace with PostgreSQL username
     host: 'localhost',
     database: 'productivity_app',
-    password: 'your_password', // Replace with your PostgreSQL password
+    password: 'your_password', // Replace with PostgreSQL password
     port: 5432,
 });
 
@@ -59,7 +59,7 @@ app.delete('/api/tasks/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to delete task' });
     }
 });
-////////////////////////////////////////////////////////////////////////////////CALENDAR
+////////////////////////////////////////////////          CALENDAR
 // Add a new task with due date
 app.post('/api/tasks', async (req, res) => {
     const { text, due_date } = req.body;
