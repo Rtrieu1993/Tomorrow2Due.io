@@ -22,14 +22,46 @@
     </style>
 </head>
 <body>
+    <header>
+        <h1>My Productivity Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#tasks">Tasks</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#notes">Notes</a></li>
+            </ul>
+        </nav>
+    </header>
     <h1>Tomorrow2Due</h1>
     <h2>To Do List:</h2>
     <input type="text" id="new-item" placeholder="New item">
     <button onclick="addItem()">Add</button>
     <ul id="todo-list"></ul>
 
-    <div id="calendar"></div>
-    
+
+    <main>
+        <section id="tasks">
+            <h2>To-Do List</h2>
+            <ul id="task-list">
+                <li><input type="checkbox" id="task1"> Task 1</li>
+                <li><input type="checkbox" id="task2"> Task 2</li>
+                <li><input type="checkbox" id="task3"> Task 3</li>
+            </ul>
+        </section>
+
+        <section id="calendar">
+            <h2>My Calendar</h2>
+            <div id="calendar"></div>
+        </section>
+
+        <section id="notes">
+            <h2>Quick Notes</h2>
+            <textarea placeholder="Write your notes here..."></textarea>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Footer</p>
+    </footer>
     <script>
         function addItem() {
             const newItem = document.getElementById('new-item').value;
