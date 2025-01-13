@@ -1,20 +1,43 @@
-import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import './App.css';
+// sets up routing of each component using react-router-dom
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Calendar from './components/Calendar';
+import Tasks from './components/Tasks';
+import Notes from './components/Notes';
+
+
+const Header = () => {
+  return (
+    <header>
+    <h1>My Productivity Dashboard</h1>
+    <nav>
+      <ul>
+        <li><Link to="/tasks" onClick={() => console.log('Tasks link clicked')}>Tasks</Link></li>
+        <li><Link to="/calendar">Calendar</Link></li>
+        <li><Link to="/notes">Notes</Link></li>
+      </ul>
+    </nav>
+  </header>
+  );
+};
 
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/notes" element={<Notes />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
