@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomorrow2Due</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="frontend\src\App.css">
     <script src="assets/css/bootstrap.css" defer></script>
     <style>
         body {
@@ -25,7 +25,7 @@
 
 <body>
     <header>
-        <h1>My Productivity Dashboard</h1>
+        <h1>Tomorrow2Due</h1>
         <nav>
             <ul>
                 <li><a href="#tasks">Tasks</a></li>
@@ -34,23 +34,27 @@
             </ul>
         </nav>
     </header>
-    <h1>Tomorrow2Due</h1>
+
     <h2>To Do List:</h2>
     <input type="text" id="new-item" placeholder="New item">
     <button onclick="addItem()">Add</button>
     <ul id="todo-list"></ul>
 
+    <!-- <div id="calendar"></div>
+    <div id="event-modal" style="display:none;">
+        <h2>Create Event</h2>
+        <form id="event-form">
+            <input type="text" id="event-title" placeholder="Event Title" required>
+            <textarea id="event-description" placeholder="Event Description"></textarea>
+            <input type="datetime-local" id="event-start" required>
+            <input type="datetime-local" id="event-end" required>
+            <button type="submit">Save Event</button>
+        </form>
+    </div> -->
+
+    <script src="script.js"></script>
 
     <main>
-        <section id="tasks">
-            <h2>To-Do List</h2>
-            <ul id="task-list">
-                <li><input type="checkbox" id="task1"> Task 1</li>
-                <li><input type="checkbox" id="task2"> Task 2</li>
-                <li><input type="checkbox" id="task3"> Task 3</li>
-            </ul>
-        </section>
-
         <section id="calendar">
             <h2>My Calendar</h2>
             <div id="calendar"></div>

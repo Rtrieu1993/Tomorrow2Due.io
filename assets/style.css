@@ -4,12 +4,18 @@ body {
     background-color: #f1e5d8; 
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 header {
+    
     color: transparent;
     padding: 20px;
     text-align: center;
+    margin-top: auto;
+    justify-content: space-between;
+    align-items: center;
+
 }
 nav ul {
     list-style-type: none;
@@ -35,14 +41,10 @@ main {
 }
 
 section {
-    background-color: white;
+    text-align: center;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-}
-
-h2 {
-    color: #333;
 }
 
 textarea {
@@ -66,7 +68,7 @@ textarea {
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 h1 {
-    font-size: 50px;
+    font-size: 80px;
     font-family: 'Bebas Neue', sans-serif;
     
     color: #7d746b;
@@ -93,6 +95,13 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin: 20px;
 }
 footer {
     text-align: center;
