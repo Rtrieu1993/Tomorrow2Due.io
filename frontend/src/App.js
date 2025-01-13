@@ -1,110 +1,42 @@
+// sets up routing of each component using react-router-dom
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Calendar from './components/Calendar';
+import Tasks from './components/Tasks';
+import Notes from './components/Notes';
+
+const Header = () => {
+  return (
+    <header>
+    <h1>My Productivity Dashboard</h1>
+    <nav>
+      <ul>
+        <li><Link to="/tasks" onClick={() => console.log('Tasks link clicked')}>Tasks</Link></li>
+        <li><Link to="/calendar">Calendar</Link></li>
+        <li><Link to="/notes">Notes</Link></li>
+      </ul>
+    </nav>
+  </header>
+  );
+};
 
 function App() {
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/notes" element={<Notes />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
-// export default App;
-$('#calendar').fullCalendar({
-  defaultView: 'month', // Change to 'week', 'agendaDay', etc.
-});
- // Initialize FullCalendar
- const calendar = new FullCalendar.Calendar(calendarEl, {
-  initialView: 'month', // Show month view by default
-  selectable: true,  // Enable date selection
-  events: async function(fetchInfo, successCallback, failureCallback) {
-      try {
-          const response = await fetch('/api/tasks');
-          const tasks = await response.json();
-
-          const events = tasks.map(task => ({
-              title: task.text,
-              start: task.due_date, // Use the due_date as the start date
-              description: `Task: ${task.text}`, // Optional description
-          }));
-
-          successCallback(events);
-      } catch (err) {
-          console.error(err);
-          failureCallback(err);
-      }
-  },
-  dateClick: function(info) {
-      // This function will trigger when a date is clicked
-      const selectedDate = info.dateStr; // Get the clicked date (ISO format)
-
-      // Prompt the user to add a task
-      const taskText = prompt(`Enter task for ${selectedDate}:`);
-      if (taskText) {
-          // If a task is entered, add it to the database
-          addTaskToDatabase(taskText, selectedDate);
-      }
-  }
-});
-
-//Reminders
-var eventTime = new Date('2025-01-14T10:00:00').getTime();
-var reminderTime = eventTime - 600000; // 10 minutes before the event
-
-setTimeout(function() {
-  alert("Reminder: Your event starts soon!");
-}, reminderTime - Date.now());
-
-calendar.render();
-// Function to add task to the backend (PostgreSQL)
-async function addTaskToDatabase(taskText, dueDate) {
-  const newTask = {
-      text: taskText,
-      due_date: dueDate, // Assign due date
-  };
-
-  // Send the task to the backend
-  const response = await fetch('/api/tasks', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newTask)
-  });
-
-  const task = await response.json();
-  addTaskToUI(task); // Add task to the UI (task list)
-}
-
-// Add task to the task list on the frontend
-function addTaskToUI(task) {
-  const taskList = document.getElementById('task-list');
-  const li = document.createElement('li');
-  li.textContent = `${task.text} (Due: ${task.due_date})`;
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Delete';
-  deleteBtn.onclick = () => deleteTask(task.id, li);
-
-  li.appendChild(deleteBtn);
-  taskList.appendChild(li);
-}
-
-// Function to delete a task
-async function deleteTask(taskId, liElement) {
-  await fetch(`/api/tasks/${taskId}`, {
-      method: 'DELETE'
-  });
-  liElement.remove();
-}
-
-});
