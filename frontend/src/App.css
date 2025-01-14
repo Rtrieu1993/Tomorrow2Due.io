@@ -1,34 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-  font-family: Arial, sans-serif;
-  background-color: #f1e5d8; 
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #fafafa;
   margin: 0;
   padding: 0;
   height: 100%;
+  color: #333; 
 }
 
 header {
-  
-  color: transparent;
+  background-color: #7d746b; 
+  color: white;
   padding: 20px;
   text-align: center;
-  margin-top: auto;
+  margin-top: 0;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 60px;
+  color: #251f19; 
+  margin: 0;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 nav ul li {
   display: inline;
-  margin-right: 20px;
 }
 
 a {
-  color:  #7d746b;
+  color: #f4f0e1;
   text-decoration: none;
 }
 
@@ -36,21 +49,24 @@ a:hover {
   text-decoration: underline;
 }
 
+
 main {
   padding: 20px;
 }
 
 section {
   text-align: center;
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 textarea {
   width: 100%;
   height: 150px;
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ddd;
@@ -65,49 +81,55 @@ textarea {
   margin-bottom: 10px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-h1 {
-  font-size: 80px;
-  font-family: 'Bebas Neue', sans-serif;
-  
-  color: #7d746b;
-}
-
 h2 {
   color: #9c8460;
+  margin-top: 10px;
 }
 
-input {
-  border-radius: 10px;
+
+input, textarea {
+  border-radius: 8px;
   background-color: #f1e5d8;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 button {
   background-color: #c9b37e;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 10px 5px;
   cursor: pointer;
   border-radius: 10px;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
 }
+
+button:hover {
+  background-color: #b39a62;
+  transform: translateY(-3px);
+}
+
 
 #calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-  margin: 20px;
+  gap: 10px;
+  margin: 20px 0;
 }
+
+
 footer {
   text-align: center;
-  padding: 10px;
-
-  color: #7d746b;
+  padding: 20px;
+  background-color: #7d746b;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 .App {
@@ -118,6 +140,7 @@ footer {
   height: 40vmin;
   pointer-events: none;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

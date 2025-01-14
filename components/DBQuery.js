@@ -10,7 +10,7 @@ const DatabaseQuery = () => {
     setError("");   // clear any previous errors
 
     try {
-      const response = await fetch("http://localhost:5000/query", {
+      const response = await fetch("https://tomorrow2due-io.onrender.com/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
