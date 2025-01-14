@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Server is running'));
 
-Set up PostgreSQL connection pool
 const pool = new Pool({
     user: 'tomorrow2due_user',  
     host: 'dpg-cu2okeggph6c73a8kmeg-a',
@@ -87,9 +86,5 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 
-<<<<<<< HEAD
-const PORT = process.env.PORT || 3001;
-=======
 const PORT = process.env.PORT || 5432;
->>>>>>> 2424ef292e72e727e4a7304bcc91f0159e5a5965
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
