@@ -6,18 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomorrow2Due</title>
 
-    <!-- External Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
     <link rel="stylesheet" href="frontend/src/App.css">
 
-    <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/moment@2.18.1/moment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js" defer></script>
     <script src="assets/js/bootstrap.js" defer></script>
 </head>
 
 <body>
-    <!-- Header Section -->
+
     <header>
         <h1>Tomorrow2Due</h1>
         <nav>
@@ -25,11 +23,12 @@
                 <li><a href="#tasks">Tasks</a></li>
                 <li><a href="#calendar">Calendar</a></li>
                 <li><a href="#notes">Notes</a></li>
+                <li><a href="#Login">Login</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content -->
+
     <main>
         <section id="tasks">
             <h2>To Do List:</h2>
@@ -38,7 +37,7 @@
             <ul id="todo-list"></ul>
         </section>
 
-        <!-- Calendar Section -->
+
         <section id="calendar">
             <h2>My Calendar</h2>
             <div id="calendar"></div>
@@ -46,19 +45,19 @@
                     style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </section>
 
-        <!-- Notes Section -->
+
         <section id="notes">
             <h2>Quick Notes</h2>
             <textarea placeholder="Write your notes here..."></textarea>
         </section>
     </main>
 
-    <!-- Footer -->
+
     <footer>
         <p>&copy; 2025 Tomorrow2Due. All rights reserved.</p>
     </footer>
 
-    <!-- Inline Script to Add To-Do Items -->
+
     <script>
         function addItem() {
             const newItem = document.getElementById('new-item').value;
@@ -71,7 +70,7 @@
         }
     </script>
 
-    <!-- FullCalendar Initialization Script -->
+
     <script>
         $(document).ready(function () {
             $('#calendar').fullCalendar({
@@ -86,10 +85,10 @@
                         start: '2025-01-15T09:00:00',
                         end: '2025-01-15T10:00:00',
                     },
-                    // Additional events can be added here
+                    
                 ],
-                editable: true,  // Allow events to be dragged or resized
-                droppable: true, // Allow drag and drop events
+                editable: true,  
+                droppable: true, 
             });
         });
     </script>
