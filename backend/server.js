@@ -1,91 +1,93 @@
-require('dotenv').config();
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const { Sequelize } = require("sequelize");
 
 const app = express();
 app.use(cors());
-// app.use(express.json());
-app.use(bodyParser.json());
+app.use(express.json()); // Middleware for JSON body parsing
 
-app.get('/', (req, res) => res.send('Server is running'));
-
-// Set up PostgreSQL connection pool
-const pool = new Pool({
-    user: 'your_user',        // Replace with PostgreSQL username
-    host: 'localhost',
-    database: 'productivity_app',
-    password: 'your_password', // Replace with PostgreSQL password
-    port: 5432,
+//  Connect to PostgreSQL on Render
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Important for Render-hosted databases
+    },
+  },
 });
 
+//  Define Task Model
+const Task = sequelize.define("task", {
+  text: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  due_date: {
+    type: Sequelize.DATE,
+    allowNull: true,
+  },
+});
+
+//  Sync Database (Only in Development)
+sequelize
+  .sync()
+  .then(() => console.log("Database synced"))
+  .catch((err) => console.error("Error syncing database:", err));
+
+//  Test Database Connection
+async function testDB() {
+  try {
+    await sequelize.authenticate();
+    console.log("PostgreSQL Connected on Render!");
+  } catch (error) {
+    console.error("Database connection failed:", error);
+  }
+}
+testDB();
+
+// API Routes
+
 // Get all tasks
-app.get('/api/tasks', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM tasks');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch tasks' });
-    }
+app.get("/api/tasks", async (req, res) => {
+  try {
+    const tasks = await Task.findAll();
+    res.json(tasks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch tasks" });
+  }
 });
 
 // Add a new task
-app.post('/api/tasks', async (req, res) => {
-    const { text } = req.body;
+app.post("/api/tasks", async (req, res) => {
+  const { text, due_date } = req.body;
 
-    try {
-        const result = await pool.query(
-            'INSERT INTO tasks (text) VALUES ($1) RETURNING *',
-            [text]
-        );
-        res.json(result.rows[0]);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to add task' });
-    }
+  try {
+    const task = await Task.create({ text, due_date });
+    res.json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to add task" });
+  }
 });
 
 // Delete a task
-app.delete('/api/tasks/:id', async (req, res) => {
-    const taskId = req.params.id;
+app.delete("/api/tasks/:id", async (req, res) => {
+  const { id } = req.params;
 
-    try {
-        await pool.query('DELETE FROM tasks WHERE id = $1', [taskId]);
-        res.status(204).send();  // No Content
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to delete task' });
-    }
-});
-////////////////////////////////////////////////          CALENDAR
-// Add a new task with due date
-app.post('/api/tasks', async (req, res) => {
-    const { text, due_date } = req.body;
-
-    try {
-        const result = await pool.query(
-            'INSERT INTO tasks (text, due_date) VALUES ($1, $2) RETURNING *',
-            [text, due_date]
-        );
-        res.json(result.rows[0]);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to add task' });
-    }
-});
-// Get all tasks (including due dates)
-app.get('/api/tasks', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM tasks');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch tasks' });
-    }
+  try {
+    await Task.destroy({ where: { id } });
+    res.status(204).send(); // No Content
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete task" });
+  }
 });
 
-
-const PORT = process.env.PORT || 5432;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start the Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

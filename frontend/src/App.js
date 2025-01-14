@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import Calendar from './components/Calendar';
 import Tasks from './components/Tasks';
 import Notes from './components/Notes';
-
+import DatabaseQuery from './components/DatabaseQuery';
 
 const Header = () => {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/query" element={<DatabaseQuery />} />
       </Routes>
     </Router>
   );
