@@ -60,30 +60,6 @@ app.delete('/api/tasks/:id', async (req, res) => {
     }
 });
 
-app.post('/api/tasks', async (req, res) => {
-    const { text, due_date } = req.body;
-
-    try {
-        const result = await pool.query(
-            'INSERT INTO tasks (text, due_date) VALUES ($1, $2) RETURNING *',
-            [text, due_date]
-        );
-        res.json(result.rows[0]);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to add task' });
-    }
-});
-
-app.get('/api/tasks', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM tasks');
-        res.json(result.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch tasks' });
-    }
-});
 
 
 const PORT = process.env.PORT || 5432;
