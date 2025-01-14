@@ -7,7 +7,9 @@ import Signup from './components/Signup';
 import Calendar from './components/Calendar';
 import Tasks from './components/Tasks';
 import Notes from './components/Notes';
-import DatabaseQuery from './components/DatabaseQuery';
+import './App.css';
+import 'fullcalendar';
+
 
 const Header = () => {
   return (
@@ -18,6 +20,8 @@ const Header = () => {
         <li><Link to="/tasks" onClick={() => console.log('Tasks link clicked')}>Tasks</Link></li>
         <li><Link to="/calendar">Calendar</Link></li>
         <li><Link to="/notes">Notes</Link></li>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/signup">Login</Link></li>
       </ul>
     </nav>
   </header>
@@ -35,7 +39,6 @@ function App() {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/notes" element={<Notes />} />
-        <Route path="/query" element={<DatabaseQuery />} />
       </Routes>
     </Router>
   );
