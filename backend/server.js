@@ -11,14 +11,14 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Server is running'));
 
-// Set up PostgreSQL connection pool
-// const pool = new Pool({
-//     user: 'your_user',        // Replace with PostgreSQL username
-//     host: 'localhost',
-//     database: 'productivity_app',
-//     password: 'your_password', // Replace with PostgreSQL password
-//     port: 5432,
-// });
+Set up PostgreSQL connection pool
+const pool = new Pool({
+    user: 'tomorrow2due_user',  
+    host: 'dpg-cu2okeggph6c73a8kmeg-a',
+    database: 'tomorrow2due',
+    password: 'aJKEoF4EegpdmrREN6g0iOQbf2Kq7mkS',
+    port: 5432,
+});
 
 // Get all tasks
 app.get('/api/tasks', async (req, res) => {
@@ -87,5 +87,9 @@ app.get('/api/tasks', async (req, res) => {
 });
 
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3001;
+=======
+const PORT = process.env.PORT || 5432;
+>>>>>>> 2424ef292e72e727e4a7304bcc91f0159e5a5965
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
